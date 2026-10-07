@@ -31,14 +31,12 @@ var cSettings: [CSetting] = [
 ]
 
 let package = Package(
-    name: "mGBAEclipseCore",
-    platforms: [.iOS(.v14), .macOS(.v13)],
+    name: "mGBAWatchCore",
+    platforms: [.iOS(.v14), .macOS(.v13), .watchOS(.v10)],
     products: [
-        .library(name: "mGBAEclipseCore", targets: ["mGBA", "mGBAEclipseCore"])
+        .library(name: "mGBAWatchCore", targets: ["mGBA"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/eclipseemu/eclipsekit.git", branch: "main")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "mGBA",
@@ -142,10 +140,6 @@ let package = Package(
             ],
             publicHeadersPath: "include",
             cSettings: cSettings,
-        ),
-        .target(
-            name: "mGBAEclipseCore",
-            dependencies: ["mGBA", .product(name: "EclipseKit", package: "eclipsekit")],
         ),
     ]
 )
